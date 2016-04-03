@@ -10,6 +10,8 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
+    @replies = @comment.replies.all
+    @reply = @comment.replies.build
   end
 
   # GET /comments/new
@@ -25,12 +27,14 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
+    @idea = Idea.find_by_id @comment.idea_id
+    @comments = @idea.comments.all
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to ideas_path('/ideas/show'), notice: 'Comment was successfully created.' }
+        format.html { redirect_to ideas_path(@comment.idea_id), notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
-        format.html { render :new }
+        format.html { render :template => 'ideas/show'}
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
@@ -68,6 +72,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:user_name, :body, :idea_id)
+      params.require(:comment).permit(:user_name, :body, :idea_id, :picture)
     end
 end

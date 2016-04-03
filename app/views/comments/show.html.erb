@@ -15,5 +15,10 @@
   <%= @comment.idea_id %>
 </p>
 
+<p>
+  <strong>Picture:</strong>
+  <%= image_tag(@comment.picture_url, :width => 300) %>
+</p>
+
 <%= link_to 'Edit', edit_comment_path(@comment) %> |
 <%= link_to 'Back', comments_path %>
