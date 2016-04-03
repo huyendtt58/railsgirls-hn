@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <div class="row">
   <div class="col-md-9">
-    <%= image_tag(@idea.picture_url, width: '100%') if @idea.picture.present? %>
+    <%= image_tag(@idea.picture_url, width: '100px') if @idea.picture.present? %>
   </div>
 
   <div class="col-md-3">
@@ -21,7 +19,8 @@
       <div class="col-md-3">
         <strong><%= comment.user_name %></strong>
       </div>
-      <div class="col-md-8"><%= comment.body %></div>
+      <div class="col-md-4"><%= comment.body %></div>
+      <div class="col-md-4"><%= image_tag(comment.picture_url, width: '100%') if comment.picture.present? %></div>
       <%= link_to 'Delete', comment_path(comment), method: :delete, class: "col-md-1 btn btn-danger", data: { confirm: 'Are you sure?' } %>
     </div>
   <% end %>

@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
     belongs_to :idea
-    validates_presence_of :user_name, :body
+    belongs_to :user
+    validates_presence_of :body
     mount_uploader :picture, PictureUploader
 end
