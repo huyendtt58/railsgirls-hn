@@ -11,6 +11,8 @@ group :production do
   gem 'pg'
   gem 'rails_12factor'
 end
+#Use ImageMagick
+gem 'mini_magick', '3.8.0'
 #Use carrierwave to upload image
 gem 'carrierwave'
 # Use SCSS for stylesheets
@@ -53,3 +55,4 @@ group :development do
   gem 'spring'
 end
 
+gem 'devise'

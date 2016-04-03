@@ -10,8 +10,6 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
-    @replies = @comment.replies.all
-    @reply = @comment.replies.build
   end
 
   # GET /comments/new
